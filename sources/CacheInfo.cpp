@@ -29,6 +29,7 @@ int cacheInfo::straightExp(int Size) {
       std::chrono::duration_cast<std::chrono::microseconds>(
           std::chrono::system_clock::now().time_since_epoch()) -
       base;
+  arr[1]=k;
   return delta.count();
 }
 
@@ -48,6 +49,7 @@ int cacheInfo::reverseExp(int Size) {
       std::chrono::duration_cast<std::chrono::microseconds>(
           std::chrono::system_clock::now().time_since_epoch()) -
       base;
+  arr[1]=k;
   return delta.count();
 }
 
@@ -73,6 +75,7 @@ int cacheInfo::randomExp(int size) {
       std::chrono::duration_cast<std::chrono::microseconds>(
           std::chrono::system_clock::now().time_since_epoch()) -
       base;
+  arr[1]=k;
   return delta.count();
 }
 
