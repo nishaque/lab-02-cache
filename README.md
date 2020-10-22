@@ -157,5 +157,4 @@ investigation:                                       |  investigation:
 
 ⚠️ В отчет также необходимо добавить общий график с результатами всех исследований. ⚠️
 
-![Cache](graph.png)
-
+![Cache](./images/graph.png)
