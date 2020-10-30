@@ -135,26 +135,160 @@ cache_size['3'] = 8 mb;
 Ниже представлен формат и пример отчета:
 
 ```yaml
-investigation:                                       |  investigaion:
-  travel_variant: <вариант_прохода>                  |    travel_order: "direction"
-  experiments:                                       |    experiments:
-  - experiment:                                      |    - experiment:
-      number:                                        |        number: 1
-      input_data:                                    |        input_data:
-        buffer_size: <размер_буфера>                 |          buffer_size: "1mb"
-      results:                                       |        results:
-        duration: <продолжительность>                |          duration: "1ns"
-  - experiment:                                      |    - experiment:
-      number: <номер_эксперимента>                   |        number: 2
-      input_data:                                    |        input_data:
-        buffer_size: <размер_буфера>                 |          buffer_size: "2mb"
-      results:                                       |        results:
-        duration: <продолжительность>                |          duration: "2ns"
-                                                     |
-investigation:                                       |  investigation:
-...                                                  |  ...
+investigation:
+  travel_variant: straight
+  experiments:
+  - experiment:
+  number:1
+  input_data:
+    buffer_size: 64kb
+  results:
+    duration: 44 microseconds
+  - experiment:
+  number:2
+  input_data:
+    buffer_size: 128kb
+  results:
+    duration: 105 microseconds
+  - experiment:
+  number:3
+  input_data:
+    buffer_size: 256kb
+  results:
+    duration: 173 microseconds
+  - experiment:
+  number:4
+  input_data:
+    buffer_size: 512kb
+  results:
+    duration: 364 microseconds
+  - experiment:
+  number:5
+  input_data:
+    buffer_size: 1mb
+  results:
+    duration: 708 microseconds
+  - experiment:
+  number:6
+  input_data:
+    buffer_size: 2mb
+  results:
+    duration: 1489 microseconds
+  - experiment:
+  number:7
+  input_data:
+    buffer_size: 4mb
+  results:
+    duration: 3180 microseconds
+  - experiment:
+  number:8
+  input_data:
+    buffer_size: 6mb
+  results:
+    duration: 3586 microseconds
+investigation:
+  travel_variant: reverse
+  experiments:
+  - experiment:
+  number:1
+  input_data:
+    buffer_size: 64kb
+  results:
+    duration: 39 microseconds
+  - experiment:
+  number:2
+  input_data:
+    buffer_size: 128kb
+  results:
+    duration: 96 microseconds
+  - experiment:
+  number:3
+  input_data:
+    buffer_size: 256kb
+  results:
+    duration: 173 microseconds
+  - experiment:
+  number:4
+  input_data:
+    buffer_size: 512kb
+  results:
+    duration: 371 microseconds
+  - experiment:
+  number:5
+  input_data:
+    buffer_size: 1mb
+  results:
+    duration: 716 microseconds
+  - experiment:
+  number:6
+  input_data:
+    buffer_size: 2mb
+  results:
+    duration: 1485 microseconds
+  - experiment:
+  number:7
+  input_data:
+    buffer_size: 4mb
+  results:
+    duration: 3214 microseconds
+  - experiment:
+  number:8
+  input_data:
+    buffer_size: 6mb
+  results:
+    duration: 4381 microseconds
+investigation:
+  travel_variant: random
+  experiments:
+  - experiment:
+  number:1
+  input_data:
+    buffer_size: 64kb
+  results:
+    duration: 130 microseconds
+  - experiment:
+  number:2
+  input_data:
+    buffer_size: 128kb
+  results:
+    duration: 292 microseconds
+  - experiment:
+  number:3
+  input_data:
+    buffer_size: 256kb
+  results:
+    duration: 543 microseconds
+  - experiment:
+  number:4
+  input_data:
+    buffer_size: 512kb
+  results:
+    duration: 1128 microseconds
+  - experiment:
+  number:5
+  input_data:
+    buffer_size: 1mb
+  results:
+    duration: 2961 microseconds
+  - experiment:
+  number:6
+  input_data:
+    buffer_size: 2mb
+  results:
+    duration: 4744 microseconds
+  - experiment:
+  number:7
+  input_data:
+    buffer_size: 4mb
+  results:
+    duration: 11573 microseconds
+  - experiment:
+  number:8
+  input_data:
+    buffer_size: 6mb
+  results:
+    duration: 15046 microseconds
 ```
 
-⚠️ В отчет также необходимо добавить общий график с результатами всех исследований. ⚠️
 
 ![Cache](./images/graph.png)
