@@ -5,7 +5,6 @@
 #include "CacheInfo.hpp"
 const int intsize = 4;
 const int numIter = 1000;
-const int zero = 0;
 const int cacheLine = 16;
 
 CacheInfo::CacheInfo() {
@@ -19,13 +18,13 @@ CacheInfo::CacheInfo() {
 
 int CacheInfo::straightExp(int Size) {
   int *arr = new int[Size];
-  for (int i = zero; i < Size; i += cacheLine)  // прогрев
+  for (int i = 0; i < Size; i += cacheLine)  // прогрев
     k = arr[i];
   std::chrono::microseconds base =
       std::chrono::duration_cast<std::chrono::microseconds>(
           std::chrono::system_clock::now().time_since_epoch());
-  for (size_t t = zero; t < numIter; t++) {
-    for (int i = zero; i < Size; i += cacheLine)  // чтение
+  for (size_t t = 0; t < numIter; t++) {
+    for (int i = 0; i < Size; i += cacheLine)  // чтение
       k = arr[i];
   }
   std::chrono::microseconds delta =
@@ -42,7 +41,7 @@ int CacheInfo::reverseExp(int Size) {
   std::chrono::microseconds base =
       std::chrono::duration_cast<std::chrono::microseconds>(
           std::chrono::system_clock::now().time_since_epoch());
-  for (int t = zero; t < numIter; t++) {
+  for (int t = 0; t < numIter; t++) {
     for (int i = Size - 1; i >= 0; i -= cacheLine)  // чтение
       k = arr[i];
   }
@@ -55,20 +54,20 @@ int CacheInfo::reverseExp(int Size) {
 
 int CacheInfo::randomExp(int size) {
   std::vector<int> indOrder = std::vector<int>();
-  for (int i = zero; i < size; i += cacheLine) {
+  for (int i = 0; i < size; i += cacheLine) {
     indOrder.push_back(i);
   }
   auto random = std::default_random_engine{};
   std::shuffle(std::begin(indOrder), std::end(indOrder), random);
 
   int *arr = new int[size];
-  for (int i = zero; i < indOrder.size(); i++)  // прогрев
+  for (size_t i = 0; i < indOrder.size(); i++)  // прогрев
     k = arr[indOrder[i]];
   std::chrono::microseconds base =
       std::chrono::duration_cast<std::chrono::microseconds>(
           std::chrono::system_clock::now().time_since_epoch());
-  for (int t = zero; t < numIter; t++) {
-    for (int i = zero; i < indOrder.size(); i++) k = arr[indOrder[i]];
+  for (int t = 0; t < numIter; t++) {
+    for (size_t i = 0; i < indOrder.size(); i++) k = arr[indOrder[i]];
   }
   std::chrono::microseconds delta =
       std::chrono::duration_cast<std::chrono::microseconds>(
@@ -110,7 +109,7 @@ void CacheInfo::printResult(int size, int durat, int number) {
 
 void CacheInfo::printReport(std::string &method) {
   printHeader(method);
-  for (int i = zero; i < sizeOfBuf.size(); i++) {
+  for (size_t i = 0; i < sizeOfBuf.size(); i++) {
     printResult(sizeOfBuf[i], investigate(method, sizeOfBuf[i]), i);
   }
 }
