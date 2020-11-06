@@ -5,6 +5,7 @@
 #ifndef INCLUDE_CACHEINFO_HPP_
 #define INCLUDE_CACHEINFO_HPP_
 #include <algorithm>
+#include <chrono>
 #include <cstdlib>
 #include <iostream>
 #include <random>
