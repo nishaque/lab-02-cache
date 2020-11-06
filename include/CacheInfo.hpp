@@ -5,23 +5,26 @@
 #ifndef INCLUDE_CACHEINFO_HPP_
 #define INCLUDE_CACHEINFO_HPP_
 #include <algorithm>
-#include <chrono>
 #include <cstdlib>
 #include <iostream>
 #include <random>
-#include <vector>
 #include <string>
+#include <vector>
 
-namespace cacheInfo {
+class CacheInfo {
+ private:
+  std::vector<int> sizeOfBuf;
+  int k;
 
-std::vector<int> generateCacheInfo();
-int straightExp(int size);
-int reverseExp(int size);
-int randomExp(int size);
-void printReport(std::string& method, std::vector<int>& cacheInfo);
-void printReports();
-void printHeader(std::string& method);
-void printResult(int size, int durat, int number);
-int investigate(std::string& order, int size);
-} // namespace cacheInfo
+ public:
+  CacheInfo();
+  int straightExp(int size);
+  int reverseExp(int size);
+  int randomExp(int size);
+  void printReport(std::string& method);
+  void printReports();
+  static void printHeader(std::string& method);
+  static void printResult(int size, int durat, int number);
+  int investigate(std::string& order, int size);
+};
 #endif  // INCLUDE_CACHEINFO_HPP_
