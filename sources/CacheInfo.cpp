@@ -16,10 +16,14 @@ CacheInfo::CacheInfo() {
   k = 0;
 }
 
-int CacheInfo::straightExp(int Size) {
-  int *arr = new int[Size];
+void CacheInfo::warmup(int Size, const int *arr) {
   for (int i = 0; i < Size; i += cacheLine)  // прогрев
     k = arr[i];
+}
+
+int CacheInfo::straightExp(int Size) {
+  int *arr = new int[Size];
+  warmup(Size, arr);
   std::chrono::microseconds base =
       std::chrono::duration_cast<std::chrono::microseconds>(
           std::chrono::system_clock::now().time_since_epoch());
@@ -36,8 +40,7 @@ int CacheInfo::straightExp(int Size) {
 
 int CacheInfo::reverseExp(int Size) {
   int *arr = new int[Size];
-  for (int i = Size - 1; i >= 0; i -= cacheLine)  // прогрев
-    k = arr[i];
+  warmup(Size, arr);
   std::chrono::microseconds base =
       std::chrono::duration_cast<std::chrono::microseconds>(
           std::chrono::system_clock::now().time_since_epoch());
@@ -61,8 +64,7 @@ int CacheInfo::randomExp(int size) {
   std::shuffle(std::begin(indOrder), std::end(indOrder), random);
 
   int *arr = new int[size];
-  for (size_t i = 0; i < indOrder.size(); i++)  // прогрев
-    k = arr[indOrder[i]];
+  warmup(size, arr);
   std::chrono::microseconds base =
       std::chrono::duration_cast<std::chrono::microseconds>(
           std::chrono::system_clock::now().time_since_epoch());
