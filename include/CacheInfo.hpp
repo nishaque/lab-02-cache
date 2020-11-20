@@ -22,6 +22,7 @@ class CacheInfo {
   int straightExp(int size);
   int reverseExp(int size);
   int randomExp(int size);
+  void warmup(int Size, const int* arr);
   void printReport(std::string& method);
   void printReports();
   static void printHeader(std::string& method);
